@@ -9,56 +9,69 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this bug report!
+        検証結果の記入をお願いします。
   - type: input
-    id: contact
+    id: date
     attributes:
-      label: Contact Details
-      description: How can we get in touch with you if we need more info?
-      placeholder: ex. email@example.com
-    validations:
-      required: false
-  - type: textarea
-    id: what-happened
-    attributes:
-      label: What happened?
-      description: Also tell us, what did you expect to happen?
-      placeholder: Tell us what you see!
-      value: "A bug happened!"
+      label: 検証日時
+      description: 検証を実施した日時を入力してください
+      placeholder: ○○年○月○日
     validations:
       required: true
   - type: dropdown
-    id: version
+    id: result
     attributes:
-      label: Version
-      description: What version of our software are you running?
+      label: 検証結果
+      description: 検証結果を選択してください
       options:
-        - 1.0.2 (Default)
-        - 1.0.3 (Edge)
-      default: 0
+        - 不合格
+        - 合格
+      # default: 0
     validations:
       required: true
-  - type: dropdown
-    id: browsers
+  - type: markdown
     attributes:
-      label: What browsers are you seeing the problem on?
+      value: |
+        ## 検証内容
+  - type: dropdown
+    id: verify-item-001
+    attributes:
+      label: 検証項目1
+      description: 複数選択できます
       multiple: true
       options:
-        - Firefox
-        - Chrome
-        - Safari
-        - Microsoft Edge
-  - type: textarea
-    id: logs
-    attributes:
-      label: Relevant log output
-      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
-      render: shell
+        - 選択肢1
+        - 選択肢2
+        - 選択肢3
+        - 選択肢4
+    validations:
+      required: true
   - type: checkboxes
-    id: terms
+    id: verify-item-002
     attributes:
-      label: Code of Conduct
-      description: By submitting this issue, you agree to follow our [Code of Conduct](https://example.com)
+      label: 検証項目2
+      description: 
       options:
-        - label: I agree to follow this project's Code of Conduct
+        - label: 路面は濡れていなかったか
           required: true
+  - type: textarea
+    id: verify-data
+    attributes:
+      label: 検証データ
+      description: CSV形式で検証データを入力してください
+      render: csv
+      placeholder: |
+        target,expected,actual
+        speed,1.00,0.92
+        vibration,0.01,0.81
+  - type: markdown
+    attributes:
+      value: |
+        ## 備考
+  - type: textarea
+    id: remarks
+    attributes:
+      label: 備考
+      description: 上記に当てはまらない情報はこちらにご記入ください
+      placeholder: 特筆次項はありません、など
+      value: 特筆次項はありません。
