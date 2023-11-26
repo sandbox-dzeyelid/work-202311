@@ -24,9 +24,9 @@ body:
       label: 検証結果
       description: 検証結果を選択してください
       options:
-        - 不合格
         - 合格
-      # default: 0
+        - 不合格
+      default: 1
     validations:
       required: true
   - type: markdown
