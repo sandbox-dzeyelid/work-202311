@@ -53,7 +53,7 @@ body:
       description: 
       options:
         - label: 路面は濡れていなかったか
-          required: true
+        - label: 給油は満タンだったか
   - type: textarea
     id: verify-data
     attributes:
@@ -73,5 +73,17 @@ body:
     attributes:
       label: 備考
       description: 上記に当てはまらない情報はこちらにご記入ください
-      placeholder: 特筆次項はありません、など
+      placeholder: 路面状態、天候など
       value: 特筆次項はありません。
+  - type: markdown
+    attributes:
+      value: |
+        ## 確認
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: 入力の確認
+      description: 
+      options:
+        - label: 上記入力を確認の上、問題なければチェックしてください
+          required: true
