@@ -37,6 +37,6 @@ jobs:
       - name: コードのチェックアウト
         uses: actions/checkout@v4
       - name: Approveラベル付与
-        run: gh issue view ${{ github.event.issue.id }}
+        run: gh issue view ${{ github.event.issue.number }}
         env:
           GH_TOKEN: ${{ github.token }}
