@@ -2,9 +2,8 @@ name: 検証報告（YAML）
 description: 検証結果からissueを発行することを想定したテンプレート（YAMLによるフォーマット）
 title: "[検証報告] ○○"
 labels: ["verification-result"]
-projects: [""]
-assignees:
-  - dzeyelid
+projects: []
+assignees: []
 body:
   - type: markdown
     attributes:
