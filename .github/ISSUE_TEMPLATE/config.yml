@@ -1,6 +1,6 @@
 blank_issues_enabled: false
 contact_links:
-  - name: サンプル
+  - name: リンク サンプル
     url: https://example.com
     about: テンプレートの提示のほか、このようにリンクを提示することもできます
   - name: Issueとプルリクエストのテンプレートについて
