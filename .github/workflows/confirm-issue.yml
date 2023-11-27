@@ -32,4 +32,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Approveラベル付与
-        run: gh issue view
+        run: gh issue view ${{ github.event.issue.id }}
