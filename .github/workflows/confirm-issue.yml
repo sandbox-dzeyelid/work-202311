@@ -5,19 +5,9 @@ on:
     types:
       - opened
     label:
-      - 
+      - verification-result2
 
 jobs:
-  check-label:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "${GITHUB_ISSUE_LABELS}" | jq
-        env:
-          GITHUB_ISSUE_LABELS: ${{ toJSON(github.event.issue.labels.*.name) }}
-      - run: echo "${RESULT}"
-        env:
-          RESULT: contains(github.event.issue.labels.*.name, 'verification-result')
-
   confirm:
     name: 内容確認
     if: contains(github.event.issue.labels.*.name, 'verification-result')
