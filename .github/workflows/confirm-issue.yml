@@ -4,8 +4,6 @@ on:
   issues:
     types:
       - opened
-    label:
-      - verification-result2
 
 jobs:
   confirm:
@@ -32,6 +30,9 @@ jobs:
     name: 承認
     needs: confirm
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
     steps:
       - name: コードのチェックアウト
         uses: actions/checkout@v4
