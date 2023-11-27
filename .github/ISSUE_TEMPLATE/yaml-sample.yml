@@ -87,3 +87,9 @@ body:
       options:
         - label: 上記入力を確認の上、問題なければチェックしてください
           required: true
+  - type: markdown
+    attributes:
+      value: |
+        ## 参考
+        YAML形式のissueテンプレートの記法については、下記ドキュメントをご参照ください。
+        - [GitHub のフォームスキーマの構文 - GitHub Docs](https://docs.github.com/ja/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-githubs-form-schema)
