@@ -3,7 +3,7 @@ name: レポートを作成
 on:
   issues:
     types:
-      - opened
+      - edited
 
 jobs:
   create-report:
