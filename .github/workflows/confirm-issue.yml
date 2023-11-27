@@ -1,0 +1,29 @@
+name: サンプル1
+
+on:
+  issues:
+    types:
+      - opened
+
+jobs:
+  confirm:
+    name: 内容確認
+    runs-on: ubuntu-latest
+    outputs:
+      result: ${{ steps.set-result.outputs.CHECK_RESULT }}
+    steps:
+      - name: debug
+        run: jq ${GITHUB_CONTEXT}
+        env:
+          GITHUB_CONTEXT: ${{ fromJson(github) }}
+      - name: 結果を出力パラメータに設定する
+        id: set-result
+        run: echo "CHECK_RESULT=" >> $GITHUB_OUTPUT
+
+  approve:
+    name: 承認
+    needs: confirm
+    runs-on: ubuntu-latest
+    steps:
+      - name: Approveラベル付与
+        run: gh issue view
