@@ -1,8 +1,8 @@
 blank_issues_enabled: false
 contact_links:
-  - name: GitHub Community Support
-    url: https://github.com/orgs/community/discussions
-    about: Please ask and answer questions here.
-  - name: GitHub Security Bug Bounty
-    url: https://bounty.github.com/
-    about: Please report security vulnerabilities here.
+  - name: サンプル
+    url: https://example.com
+    about: テンプレートの提示のほか、このようにリンクを提示することもできます
+  - name: Issueとプルリクエストのテンプレートについて
+    url: https://docs.github.com/ja/communities/using-templates-to-encourage-useful-issues-and-pull-requests/about-issue-and-pull-request-templates
+    about: Issueテンプレートについては、こちらをご参照ください。
