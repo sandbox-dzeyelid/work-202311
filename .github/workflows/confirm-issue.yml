@@ -13,9 +13,9 @@ jobs:
       result: ${{ steps.set-result.outputs.CHECK_RESULT }}
     steps:
       - name: debug
-        run: jq ${GITHUB_CONTEXT}
+        run: echo ${GITHUB_CONTEXT} | jq
         env:
-          GITHUB_CONTEXT: ${{ fromJSON(github) }}
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
       - name: 結果を出力パラメータに設定する
         id: set-result
         run: echo "CHECK_RESULT=" >> $GITHUB_OUTPUT
