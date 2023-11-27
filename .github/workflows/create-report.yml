@@ -1,0 +1,26 @@
+name: レポートを作成
+
+on:
+  issues:
+    types:
+      - opened
+
+jobs:
+  create-report:
+    name: レポートを作成
+    if: contains(github.event.issue.labels.*.name, 'verification-result') && contains(github.event.issue.labels.*.name, 'approved')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - name: コードのチェックアウト
+        uses: actions/checkout@v4
+      - name: レポート用のissueを作成
+        run: |
+          gh issue create \
+            --body-file .github/workflows/issue-body-report.md \
+            --title '[レポート]'
+            
+        env:
+          GH_TOKEN: ${{ github.token }}      
