@@ -12,13 +12,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "${GITHUB_ISSUE_LABELS}" | jq
+        env:
+          GITHUB_ISSUE_LABELS: ${{ toJSON(github.event.issue.labels.*.name) }}
       - run: echo "${RESULT}"
         env:
-          RESULT: contains(github.event.issue.labels, 'verification-result')
+          RESULT: contains(github.event.issue.labels.*.name, 'verification-result')
 
   confirm:
     name: 内容確認
-    # if: contains(github.event.issue.labels, 'verification-result')
+    if: contains(github.event.issue.labels.*.name, 'verification-result')
     runs-on: ubuntu-latest
     outputs:
       result: ${{ steps.set-result.outputs.CHECK_RESULT }}
