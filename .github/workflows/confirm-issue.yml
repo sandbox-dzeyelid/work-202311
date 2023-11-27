@@ -29,6 +29,8 @@ jobs:
     needs: confirm
     runs-on: ubuntu-latest
     steps:
+      - name: コードのチェックアウト
+        uses: actions/checkout@v4
       - name: Approveラベル付与
         run: gh issue view ${{ github.event.issue.id }}
         env:
