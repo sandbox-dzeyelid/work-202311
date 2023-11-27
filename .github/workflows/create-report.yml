@@ -3,12 +3,12 @@ name: レポートを作成
 on:
   issues:
     types:
-      - edited
+      - created
 
 jobs:
   create-report:
     name: レポートを作成
-    if: contains(github.event.issue.labels.*.name, 'verification-result') && contains(github.event.issue.labels.*.name, 'approved')
+    if: contains(github.event.issue.labels.*.name, 'report')
     runs-on: ubuntu-latest
     permissions:
       contents: read
