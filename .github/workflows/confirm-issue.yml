@@ -11,7 +11,7 @@ jobs:
     if: contains(github.event.issue.labels.*.name, 'verification-result')
     runs-on: ubuntu-latest
     outputs:
-      result: ${{ steps.set-result.outputs.CHECK_RESULT }}
+      check-result: ${{ steps.set-result.outputs.CHECK_RESULT }}
     steps:
       - name: debug
         run: echo ${GITHUB_CONTEXT} | jq
@@ -29,6 +29,7 @@ jobs:
   approve:
     name: 承認
     needs: confirm
+    if: needs.confirm.outputs.check-result == 'true'
     runs-on: ubuntu-latest
     permissions:
       contents: read
