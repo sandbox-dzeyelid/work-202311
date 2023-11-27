@@ -4,10 +4,13 @@ on:
   issues:
     types:
       - opened
+    label:
+      - 
 
 jobs:
   confirm:
     name: 内容確認
+    if: contains(github.event.issue.labels, 'verification-result')
     runs-on: ubuntu-latest
     outputs:
       result: ${{ steps.set-result.outputs.CHECK_RESULT }}
@@ -24,6 +27,7 @@ jobs:
           echo "CHECK_RESULT=${check_result}" >> $GITHUB_OUTPUT
         env:
           ISSUE_BODY: ${{ github.event.issue.body }}
+
   approve:
     name: 承認
     needs: confirm
