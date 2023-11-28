@@ -1,4 +1,4 @@
-name: サンプル1
+name: 'サンプル1: 検証結果精査'
 
 on:
   issues:
@@ -8,21 +8,22 @@ on:
 jobs:
   confirm:
     name: 内容確認
-    if: contains(github.event.issue.labels.*.name, 'verification-result')
+    if: contains(github.event.issue.labels.*.name, 'verification-result-sample')
     runs-on: ubuntu-latest
     outputs:
       check-result: ${{ steps.set-result.outputs.CHECK_RESULT }}
     steps:
       - name: debug
-        run: echo ${GITHUB_CONTEXT} | jq
+        run: echo "${GITHUB_CONTEXT}" | jq
         env:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
       - name: 結果を出力パラメータに設定する
         id: set-result
         run: |
-          extracted_result=$(echo ${ISSUE_BODY} | sed -E 's/^.+### 検証結果\s+(合格|不合格).+$/\1/')
+          echo "${ISSUE_BODY}"
+          extracted_result=$(echo "${ISSUE_BODY}" | sed -E 's/^.+### 検証結果\s+(合格|不合格).+$/\1/')
           [[ "$extracted_result" == "合格" ]] && check_result=true || check_result=false
-          echo "CHECK_RESULT=${check_result}" >> $GITHUB_OUTPUT
+          echo "CHECK_RESULT=${check_result}" >> "$GITHUB_OUTPUT"
         env:
           ISSUE_BODY: ${{ github.event.issue.body }}
 
@@ -38,6 +39,6 @@ jobs:
       - name: コードのチェックアウト
         uses: actions/checkout@v4
       - name: Approveラベル付与
-        run: gh issue edit ${{ github.event.issue.number }} --add-label 'approved'
+        run: gh issue edit ${{ github.event.issue.number }} --add-label 'approved-sample'
         env:
           GH_TOKEN: ${{ github.token }}
